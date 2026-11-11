@@ -8,9 +8,10 @@ __pycache__/
 .pytest_cache/
 
 # Datos y artefactos pesados (no van a git)
-data/
-runs/
-artifacts/
+/data/
+/runs/
+/runs_debug/
+/artifacts/
 *.onnx
 *.pt
 
