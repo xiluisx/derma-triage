@@ -1,0 +1,21 @@
+# Documentación generada por skills (superpowers, etc.) — fuera de git
+docs/superpowers/
+
+# Python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# Datos y artefactos pesados (no van a git)
+data/
+runs/
+artifacts/
+*.onnx
+*.pt
+
+# Node / Cloudflare (Plan 2)
+node_modules/
+.wrangler/
+.open-next/
+.next/
