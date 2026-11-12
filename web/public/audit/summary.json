@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-12T18:41:33.363198+00:00",
+  "groups": [
+    "I-II",
+    "III-IV",
+    "V-VI"
+  ],
+  "experiments": [
+    {
+      "config": "convnext_base_cv",
+      "display_name": "ConvNeXt-T · CV 5 folds",
+      "source": "cnn",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.7676557984559308,
+        "std": 0.0
+      },
+      "auroc": {
+        "mean": 0.9108510934929508,
+        "std": 0.0
+      },
+      "malignant_recall": {
+        "mean": 0.710022271714922,
+        "std": 0.0
+      },
+      "ece": {
+        "mean": 0.007508890103857594,
+        "std": 0.0
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.7163420829805249,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7231788079470198,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.6376811594202898,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.7540605930984062,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7926352095336459,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.7567829326020795,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.08549764852673003,
+        "std": 0.0
+      }
+    },
+    {
+      "config": "convnext_base",
+      "display_name": "ConvNeXt-T",
+      "source": "cnn",
+      "n_runs": 5,
+      "macro_f1": {
+        "mean": 0.7674137292028721,
+        "std": 0.011073165623206442
+      },
+      "auroc": {
+        "mean": 0.9112703058978898,
+        "std": 0.007471975557327824
+      },
+      "malignant_recall": {
+        "mean": 0.7099909366493442,
+        "std": 0.02812449399201042
+      },
+      "ece": {
+        "mean": 0.015490325744131474,
+        "std": 0.001825563147515822
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.716323392691125,
+          "std": 0.0273737198024594
+        },
+        "III-IV": {
+          "mean": 0.723130126641106,
+          "std": 0.02400223587154522
+        },
+        "V-VI": {
+          "mean": 0.6382113821138211,
+          "std": 0.08002820143375756
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.7538161385061862,
+          "std": 0.008111388617292398
+        },
+        "III-IV": {
+          "mean": 0.7924481948400859,
+          "std": 0.009402556268371578
+        },
+        "V-VI": {
+          "mean": 0.7552507469322932,
+          "std": 0.028922580636446666
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.09197409277747862,
+        "std": 0.06864297703638056
+      }
+    },
+    {
+      "config": "convnext_both",
+      "display_name": "ConvNeXt-T + ambas",
+      "source": "cnn",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.7553788296003251,
+        "std": 0.0
+      },
+      "auroc": {
+        "mean": 0.9069487308240299,
+        "std": 0.0
+      },
+      "malignant_recall": {
+        "mean": 0.671875,
+        "std": 0.0
+      },
+      "ece": {
+        "mean": 0.01156393283882147,
+        "std": 0.0
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.6864406779661016,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.695364238410596,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.5609756097560976,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.7387325661990617,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7746864787218488,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.7741020458816438,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.1343886286544984,
+        "std": 0.0
+      }
+    },
+    {
+      "config": "convnext_coloraug_cv",
+      "display_name": "ConvNeXt-T + color aug · CV 5 folds",
+      "source": "cnn",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.758937818575232,
+        "std": 0.0
+      },
+      "auroc": {
+        "mean": 0.9059688908885287,
+        "std": 0.0
+      },
+      "malignant_recall": {
+        "mean": 0.711358574610245,
+        "std": 0.0
+      },
+      "ece": {
+        "mean": 0.01026281676821211,
+        "std": 0.0
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.7104149026248942,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7364238410596027,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.6570048309178744,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.7402394179016935,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7902522575131185,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.7530452347673485,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.07941901014172825,
+        "std": 0.0
+      }
+    },
+    {
+      "config": "convnext_coloraug",
+      "display_name": "ConvNeXt-T + color aug",
+      "source": "cnn",
+      "n_runs": 5,
+      "macro_f1": {
+        "mean": 0.758824726897511,
+        "std": 0.008946080165153745
+      },
+      "auroc": {
+        "mean": 0.9065193596427388,
+        "std": 0.006521490187847758
+      },
+      "malignant_recall": {
+        "mean": 0.7113500282815428,
+        "std": 0.03589312415637237
+      },
+      "ece": {
+        "mean": 0.014759836638632668,
+        "std": 0.002847492056104223
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.7104305227776586,
+          "std": 0.029383822441438535
+        },
+        "III-IV": {
+          "mean": 0.7362260950389219,
+          "std": 0.04768963901313259
+        },
+        "V-VI": {
+          "mean": 0.6572590011614402,
+          "std": 0.07318769045588101
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.7401218680214066,
+          "std": 0.011210522518137736
+        },
+        "III-IV": {
+          "mean": 0.7898680761347852,
+          "std": 0.017122103801033135
+        },
+        "V-VI": {
+          "mean": 0.7527715812894794,
+          "std": 0.015022044980791032
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.09253358140676368,
+        "std": 0.04688061931926629
+      }
+    },
+    {
+      "config": "convnext_reweight",
+      "display_name": "ConvNeXt-T + reweighting",
+      "source": "cnn",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.7575647532747453,
+        "std": 0.0
+      },
+      "auroc": {
+        "mean": 0.9020273734778693,
+        "std": 0.0
+      },
+      "malignant_recall": {
+        "mean": 0.7165178571428571,
+        "std": 0.0
+      },
+      "ece": {
+        "mean": 0.01725380499022917,
+        "std": 0.0
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.7161016949152542,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7615894039735099,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.5853658536585366,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.7263392499236566,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.796975640366445,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.7805439156002315,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.1762235503149734,
+        "std": 0.0
+      }
+    },
+    {
+      "config": "effnet_base",
+      "display_name": "EfficientNet-B0 (baseline)",
+      "source": "cnn",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.7225047527047296,
+        "std": 0.0
+      },
+      "auroc": {
+        "mean": 0.8876805675905409,
+        "std": 0.0
+      },
+      "malignant_recall": {
+        "mean": 0.6674107142857143,
+        "std": 0.0
+      },
+      "ece": {
+        "mean": 0.020494788029612358,
+        "std": 0.0
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.614406779661017,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7549668874172185,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.6097560975609756,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.6848858587645218,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7814622414622415,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.7132327041791248,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.14521078985624292,
+        "std": 0.0
+      }
+    }
+  ],
+  "quantization": [],
+  "comparisons": [
+    {
+      "config_a": "convnext_base_cv",
+      "config_b": "convnext_coloraug_cv",
+      "metric": "macro_f1",
+      "diff": -0.008717979880698778,
+      "ci_low": -0.015386761732451298,
+      "ci_high": -0.0018151693590192054
+    },
+    {
+      "config_a": "convnext_base_cv",
+      "config_b": "convnext_coloraug_cv",
+      "metric": "malignant_recall_I-II",
+      "diff": -0.005927180355630779,
+      "ci_low": -0.02373083131557715,
+      "ci_high": 0.012143825553444215
+    },
+    {
+      "config_a": "convnext_base_cv",
+      "config_b": "convnext_coloraug_cv",
+      "metric": "malignant_recall_III-IV",
+      "diff": 0.013245033112582849,
+      "ci_low": -0.00912766288291092,
+      "ci_high": 0.03634038991050347
+    },
+    {
+      "config_a": "convnext_base_cv",
+      "config_b": "convnext_coloraug_cv",
+      "metric": "malignant_recall_V-VI",
+      "diff": 0.019323671497584627,
+      "ci_low": -0.020623926116838415,
+      "ci_high": 0.06251644736842096
+    },
+    {
+      "config_a": "convnext_base_cv",
+      "config_b": "convnext_coloraug_cv",
+      "metric": "malignant_recall_gap",
+      "diff": -0.006078638385001778,
+      "ci_low": -0.05765665066645189,
+      "ci_high": 0.038368086634094786
+    }
+  ]
+}
