@@ -1,0 +1,12 @@
+name: convnext_reweight
+model: convnext_tiny.fb_in1k
+pretrained: true
+epochs: 15
+batch_size: 64
+lr: 1.0e-4
+weight_decay: 0.05
+warmup_epochs: 1
+num_workers: 4
+amp: true
+tone_reweight: true
+color_aug: false

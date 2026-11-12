@@ -1,0 +1,12 @@
+name: effnet_base
+model: efficientnet_b0.ra_in1k
+pretrained: true
+epochs: 15
+batch_size: 64
+lr: 3.0e-4
+weight_decay: 0.05
+warmup_epochs: 1
+num_workers: 4
+amp: true
+tone_reweight: false
+color_aug: false
