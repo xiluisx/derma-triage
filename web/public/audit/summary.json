@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-12T18:41:33.363198+00:00",
+  "generated_at": "2026-11-12T19:02:29.119040+00:00",
   "groups": [
     "I-II",
     "III-IV",
@@ -386,7 +386,34 @@
       }
     }
   ],
-  "quantization": [],
+  "quantization": [
+    {
+      "variant": "int8",
+      "passed": false,
+      "size_mb": 28.94055,
+      "macro_f1_fp32": 0.7709419082246652,
+      "macro_f1_quant": 0.5598815847197295,
+      "macro_f1_drop": 0.21106032350493575,
+      "malignant_recall_drop_by_group": {
+        "I-II": 0.39830508474576265,
+        "III-IV": 0.35099337748344367,
+        "V-VI": 0.26829268292682934
+      }
+    },
+    {
+      "variant": "fp16",
+      "passed": true,
+      "size_mb": 55.755336,
+      "macro_f1_fp32": 0.7709419082246652,
+      "macro_f1_quant": 0.7711534769276627,
+      "macro_f1_drop": -0.00021156870299743336,
+      "malignant_recall_drop_by_group": {
+        "I-II": 0.0,
+        "III-IV": 0.0,
+        "V-VI": -0.024390243902438935
+      }
+    }
+  ],
   "comparisons": [
     {
       "config_a": "convnext_base_cv",
