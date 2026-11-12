@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-15T00:00:00Z",
+  "groups": ["I-II", "III-IV", "V-VI"],
+  "experiments": [
+    {
+      "config": "convnext_base", "display_name": "ConvNeXt-T", "source": "cnn", "n_runs": 3,
+      "macro_f1": {"mean": 0.70, "std": 0.01}, "auroc": {"mean": 0.88, "std": 0.01},
+      "malignant_recall": {"mean": 0.72, "std": 0.02}, "ece": {"mean": 0.04, "std": 0.01},
+      "malignant_recall_by_group": {"I-II": {"mean": 0.76, "std": 0.02}, "III-IV": {"mean": 0.71, "std": 0.03}, "V-VI": {"mean": 0.58, "std": 0.06}},
+      "macro_f1_by_group": {"I-II": {"mean": 0.72, "std": 0.01}, "III-IV": {"mean": 0.69, "std": 0.02}, "V-VI": {"mean": 0.62, "std": 0.04}},
+      "malignant_recall_gap": {"mean": 0.18, "std": 0.05}
+    },
+    {
+      "config": "vlm_claude", "display_name": "Claude (zero-shot)", "source": "vlm", "n_runs": 1,
+      "macro_f1": {"mean": 0.55, "std": 0.0}, "auroc": null,
+      "malignant_recall": {"mean": 0.60, "std": 0.0}, "ece": null,
+      "malignant_recall_by_group": {"I-II": {"mean": 0.63, "std": 0.0}, "III-IV": {"mean": 0.60, "std": 0.0}, "V-VI": {"mean": 0.50, "std": 0.0}},
+      "macro_f1_by_group": {"I-II": {"mean": 0.56, "std": 0.0}, "III-IV": {"mean": 0.55, "std": 0.0}, "V-VI": {"mean": 0.49, "std": 0.0}},
+      "malignant_recall_gap": {"mean": 0.13, "std": 0.0}
+    }
+  ],
+  "quantization": [
+    {"variant": "int8", "passed": true, "size_mb": 28.4, "macro_f1_fp32": 0.70, "macro_f1_quant": 0.695,
+     "macro_f1_drop": 0.005, "malignant_recall_drop_by_group": {"I-II": 0.0, "III-IV": 0.01, "V-VI": 0.015}}
+  ],
+  "comparisons": [
+    {"config_a": "convnext_base_cv", "config_b": "convnext_reweight_cv", "metric": "malignant_recall_V-VI",
+     "diff": 0.09, "ci_low": 0.02, "ci_high": 0.16}
+  ]
+}
