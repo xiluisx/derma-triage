@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# Variables públicas (URL del modelo, variante): sí se versionan
+!.env.development
+!.env.production
 !.env.example
 
 # vercel
