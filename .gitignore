@@ -14,6 +14,7 @@ __pycache__/
 /artifacts/
 *.onnx
 *.pt
+/web/tests/fixtures/parity-local/
 
 # Node / Cloudflare (Plan 2)
 node_modules/
