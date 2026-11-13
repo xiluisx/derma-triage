@@ -42,6 +42,10 @@ Si el campo "incierto" es verdadero, dilo explícitamente y no presentes la clas
 
 export async function POST(req: Request) {
   const { env } = getCloudflareContext();
+  // Sin key = explicaciones apagadas (la key solo se sube a producción el día de la demo).
+  if (!env.ANTHROPIC_API_KEY) {
+    return Response.json({ error: "Las explicaciones no están disponibles por ahora." }, { status: 503 });
+  }
 
   const ip = req.headers.get("cf-connecting-ip") ?? "local";
   const { success } = await env.EXPLAIN_RATE_LIMITER.limit({ key: ip });
