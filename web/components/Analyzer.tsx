@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CamOverlay } from "./CamOverlay";
 import { Explanation } from "./Explanation";
 import { ResultCard } from "./ResultCard";
+import { WebcamCapture } from "./WebcamCapture";
 import { useClassifier } from "@/lib/inference/useClassifier";
 import type { Prediction } from "@/lib/inference/types";
 
@@ -12,6 +13,10 @@ export function Analyzer() {
   const [pred, setPred] = useState<Prediction | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [webcamOpen, setWebcamOpen] = useState(false);
+  // Táctil (móvil/tablet): cámara nativa vía <input capture>. Escritorio: modal con la webcam.
+  const [isTouch, setIsTouch] = useState(false);
+  useEffect(() => setIsTouch(window.matchMedia("(pointer: coarse)").matches), []);
 
   useEffect(() => () => { if (imageUrl) URL.revokeObjectURL(imageUrl); }, [imageUrl]);
 
@@ -50,12 +55,20 @@ export function Analyzer() {
           <input type="file" accept="image/*" className="sr-only" disabled={clf.status !== "ready" || busy}
                  onChange={(e) => onFile(e.target.files?.[0])} />
         </label>
-        <label className="cursor-pointer rounded-md border px-4 py-2">
-          Tomar foto
-          <input type="file" accept="image/*" capture="environment" className="sr-only"
-                 disabled={clf.status !== "ready" || busy} onChange={(e) => onFile(e.target.files?.[0])} />
-        </label>
+        {isTouch ? (
+          <label className="cursor-pointer rounded-md border px-4 py-2">
+            Tomar foto
+            <input type="file" accept="image/*" capture="environment" className="sr-only"
+                   disabled={clf.status !== "ready" || busy} onChange={(e) => onFile(e.target.files?.[0])} />
+          </label>
+        ) : (
+          <button type="button" className="rounded-md border px-4 py-2 disabled:opacity-40"
+                  disabled={clf.status !== "ready" || busy} onClick={() => setWebcamOpen(true)}>
+            Tomar foto
+          </button>
+        )}
       </div>
+      <WebcamCapture open={webcamOpen} onClose={() => setWebcamOpen(false)} onCapture={onFile} />
       {busy && <p className="text-sm">Analizando en tu dispositivo…</p>}
       {error && <p role="alert" className="text-red-600">{error}</p>}
       {pred && imageUrl && (
