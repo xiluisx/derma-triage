@@ -23,6 +23,7 @@ DISPLAY_NAMES = {
     "convnext_reweight": "ConvNeXt-T + reweighting",
     "convnext_coloraug": "ConvNeXt-T + color aug",
     "convnext_both": "ConvNeXt-T + ambas",
+    "cnn_vlm_subset": "CNN elegida (submuestra de Claude)",
     "vlm_claude": "Claude (zero-shot)",
     "vlm_medgemma": "MedGemma 4B (zero-shot)",
 }

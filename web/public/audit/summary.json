@@ -1,12 +1,66 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-12T19:02:29.119040+00:00",
+  "generated_at": "2026-11-13T18:24:09.924260+00:00",
   "groups": [
     "I-II",
     "III-IV",
     "V-VI"
   ],
   "experiments": [
+    {
+      "config": "cnn_vlm_subset",
+      "display_name": "CNN elegida (submuestra de Claude)",
+      "source": "cnn",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.7370957931886769,
+        "std": 0.0
+      },
+      "auroc": {
+        "mean": 0.9095517389112345,
+        "std": 0.0
+      },
+      "malignant_recall": {
+        "mean": 0.6752336448598131,
+        "std": 0.0
+      },
+      "ece": {
+        "mean": 0.0631340143662514,
+        "std": 0.0
+      },
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.6864406779661016,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.6887417218543046,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.5609756097560976,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.6036230289695635,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.66958109443518,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.7679653679653679,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.12776611209820699,
+        "std": 0.0
+      }
+    },
     {
       "config": "convnext_base_cv",
       "display_name": "ConvNeXt-T · CV 5 folds",
@@ -384,6 +438,102 @@
         "mean": 0.14521078985624292,
         "std": 0.0
       }
+    },
+    {
+      "config": "vlm_claude",
+      "display_name": "Claude (zero-shot)",
+      "source": "vlm",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.6368910309986813,
+        "std": 0.0
+      },
+      "auroc": null,
+      "malignant_recall": {
+        "mean": 0.7429906542056075,
+        "std": 0.0
+      },
+      "ece": null,
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.7330508474576272,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7748344370860927,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.6829268292682927,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.5911681759194849,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.6382205975548102,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.5701727719511577,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.09190760781779994,
+        "std": 0.0
+      }
+    },
+    {
+      "config": "vlm_medgemma",
+      "display_name": "MedGemma 4B (zero-shot)",
+      "source": "vlm",
+      "n_runs": 1,
+      "macro_f1": {
+        "mean": 0.5394455094624978,
+        "std": 0.0
+      },
+      "auroc": null,
+      "malignant_recall": {
+        "mean": 0.7172897196261683,
+        "std": 0.0
+      },
+      "ece": null,
+      "malignant_recall_by_group": {
+        "I-II": {
+          "mean": 0.6694915254237288,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.7615894039735099,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.8292682926829268,
+          "std": 0.0
+        }
+      },
+      "macro_f1_by_group": {
+        "I-II": {
+          "mean": 0.4944093302892627,
+          "std": 0.0
+        },
+        "III-IV": {
+          "mean": 0.5520320660233402,
+          "std": 0.0
+        },
+        "V-VI": {
+          "mean": 0.4678826291729517,
+          "std": 0.0
+        }
+      },
+      "malignant_recall_gap": {
+        "mean": 0.15977676725919798,
+        "std": 0.0
+      }
     }
   ],
   "quantization": [
@@ -454,6 +604,86 @@
       "diff": -0.006078638385001778,
       "ci_low": -0.05765665066645189,
       "ci_high": 0.038368086634094786
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_claude",
+      "metric": "macro_f1",
+      "diff": -0.10020476218999563,
+      "ci_low": -0.154649237055707,
+      "ci_high": -0.044903394262169445
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_claude",
+      "metric": "malignant_recall_I-II",
+      "diff": 0.04661016949152552,
+      "ci_low": -0.02283631083896213,
+      "ci_high": 0.11894788639984993
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_claude",
+      "metric": "malignant_recall_III-IV",
+      "diff": 0.08609271523178808,
+      "ci_low": -0.005621206250807192,
+      "ci_high": 0.17715507518796986
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_claude",
+      "metric": "malignant_recall_V-VI",
+      "diff": 0.12195121951219512,
+      "ci_low": -0.09090909090909094,
+      "ci_high": 0.33333333333333337
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_claude",
+      "metric": "malignant_recall_gap",
+      "diff": -0.035858504280407044,
+      "ci_low": -0.22609909817585574,
+      "ci_high": 0.15488176420813973
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_medgemma",
+      "metric": "macro_f1",
+      "diff": -0.1976502837261791,
+      "ci_low": -0.24776656426331348,
+      "ci_high": -0.1469863103126226
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_medgemma",
+      "metric": "malignant_recall_I-II",
+      "diff": -0.016949152542372836,
+      "ci_low": -0.08403361344537819,
+      "ci_high": 0.05263737537676793
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_medgemma",
+      "metric": "malignant_recall_III-IV",
+      "diff": 0.07284768211920534,
+      "ci_low": -0.018880097382836268,
+      "ci_high": 0.16365259740259736
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_medgemma",
+      "metric": "malignant_recall_V-VI",
+      "diff": 0.2682926829268292,
+      "ci_low": 0.09756097560975607,
+      "ci_high": 0.43339743589743557
+    },
+    {
+      "config_a": "cnn_vlm_subset",
+      "config_b": "vlm_medgemma",
+      "metric": "malignant_recall_gap",
+      "diff": 0.032010655160991,
+      "ci_low": -0.20140479311538886,
+      "ci_high": 0.2053665149850262
     }
   ]
 }

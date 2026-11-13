@@ -42,7 +42,10 @@ def main() -> None:
 
     y = a.label_idx.to_numpy()
     groups = a.tone.map(tone_group).to_numpy()
-    pa, pb = a[LOGITS].to_numpy().argmax(1), b[LOGITS].to_numpy().argmax(1)
+    def preds(df: pd.DataFrame) -> np.ndarray:  # CNN: argmax de logits · VLM: pred_idx (-1 = abstención)
+        return df.pred_idx.to_numpy() if "pred_idx" in df else df[LOGITS].to_numpy().argmax(1)
+
+    pa, pb = preds(a), preds(b)
     point = {k: metrics(y, pb, groups)[k] - v for k, v in metrics(y, pa, groups).items()}
 
     rng = np.random.default_rng(0)
@@ -60,7 +63,11 @@ def main() -> None:
         results.append({"config_a": name_a, "config_b": name_b, "metric": k,
                         "diff": float(d), "ci_low": float(lo), "ci_high": float(hi)})
         print(f"{k:28s} {d:+.3f}  IC95 [{lo:+.3f}, {hi:+.3f}]  {'✔ significativo' if lo > 0 or hi < 0 else '· no concluyente'}")
-    Path(args.out).write_text(json.dumps(results, indent=2))
+    # Acumula: reemplaza solo las filas del mismo par (a, b) y conserva las demás comparaciones.
+    out = Path(args.out)
+    prev = json.loads(out.read_text()) if out.exists() else []
+    keep = [r for r in prev if (r["config_a"], r["config_b"]) != (name_a, name_b)]
+    out.write_text(json.dumps(keep + results, indent=2))
 
 
 if __name__ == "__main__":
