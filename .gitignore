@@ -15,6 +15,7 @@ __pycache__/
 *.onnx
 *.pt
 /web/tests/fixtures/parity-local/
+/reports/figures/gradcam/
 
 # Node / Cloudflare (Plan 2)
 node_modules/
