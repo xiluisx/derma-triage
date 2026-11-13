@@ -8,7 +8,32 @@ declare const self: DedicatedWorkerGlobalScope;
 let session: ort.InferenceSession | null = null;
 const post = (m: WorkerOut, transfer: Transferable[] = []) => self.postMessage(m, transfer);
 
+const MODEL_CACHE = "derma-models";
+
+// Cache Storage: el modelo se guarda explícitamente y la siguiente visita no toca la red.
+// La caché HTTP no basta (Chrome puede desalojar entradas de ~56 MB y DevTools la desactiva).
+// La URL incluye la versión (v1/), así que una entrada guardada nunca queda obsoleta.
 async function download(url: string): Promise<Uint8Array> {
+  const cache = "caches" in self ? await caches.open(MODEL_CACHE).catch(() => null) : null;
+  const hit = await cache?.match(url);
+  if (hit) {
+    const bytes = new Uint8Array(await hit.arrayBuffer());
+    post({ type: "progress", loaded: bytes.length, total: bytes.length, cached: true });
+    return bytes;
+  }
+  const bytes = await fetchWithProgress(url);
+  if (cache) {
+    // Borra modelos de versiones anteriores (otra carpeta vN/) y guarda el actual; si falla la cuota, sigue sin caché.
+    const versionDir = url.slice(0, url.lastIndexOf("/") + 1);
+    for (const req of await cache.keys()) if (!req.url.startsWith(versionDir)) await cache.delete(req);
+    await cache.put(url, new Response(bytes.slice().buffer, { headers: { "content-type": "application/octet-stream" } })).catch(
+      (e) => console.warn("[modelo] no se pudo guardar en caché", e),
+    );
+  }
+  return bytes;
+}
+
+async function fetchWithProgress(url: string): Promise<Uint8Array> {
   const res = await fetch(url);
   if (!res.ok || !res.body) throw new Error(`No se pudo descargar el modelo (HTTP ${res.status})`);
   const total = Number(res.headers.get("content-length") ?? 0);

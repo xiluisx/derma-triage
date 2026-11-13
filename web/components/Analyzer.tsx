@@ -38,7 +38,11 @@ export function Analyzer() {
   return (
     <div className="flex flex-col gap-6">
       {clf.status === "loading" && (
-        <p className="text-sm">Descargando el modelo (una sola vez)… {Math.round(clf.progress * 100)}%</p>
+        <p className="text-sm">
+          {clf.cached
+            ? "Cargando el modelo guardado en este navegador…"
+            : `Descargando el modelo (solo la primera vez)… ${Math.round(clf.progress * 100)}%`}
+        </p>
       )}
       <div className="flex flex-wrap gap-3">
         <label className="cursor-pointer rounded-md bg-neutral-900 text-white px-4 py-2 dark:bg-white dark:text-black">

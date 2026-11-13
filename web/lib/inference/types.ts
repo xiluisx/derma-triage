@@ -28,7 +28,7 @@ export type WorkerIn =
   | { type: "run"; id: number; bitmap: ImageBitmap };
 
 export type WorkerOut =
-  | { type: "progress"; loaded: number; total: number }
+  | { type: "progress"; loaded: number; total: number; cached?: boolean }
   | { type: "ready"; backend: string }
   | ({ type: "result"; id: number } & Prediction)
   | { type: "error"; id?: number; message: string };

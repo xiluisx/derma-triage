@@ -6,6 +6,7 @@ type Status = "loading" | "ready" | "error";
 interface State {
   status: Status;
   progress: number; // 0..1
+  cached?: boolean; // el modelo vino de Cache Storage (sin red)
   backend?: string;
   error?: string;
   meta?: ModelMeta;
@@ -26,7 +27,7 @@ export function useClassifier() {
 
     worker.onmessage = (e: MessageEvent<WorkerOut>) => {
       const m = e.data;
-      if (m.type === "progress") setState((s) => ({ ...s, progress: m.total ? m.loaded / m.total : 0 }));
+      if (m.type === "progress") setState((s) => ({ ...s, progress: m.total ? m.loaded / m.total : 0, cached: m.cached }));
       else if (m.type === "ready") {
         console.info(`[modelo] listo, motor: ${m.backend}`);
         setState((s) => ({ ...s, status: "ready", progress: 1, backend: m.backend }));
